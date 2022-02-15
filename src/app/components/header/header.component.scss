@@ -1,0 +1,51 @@
+header {
+  background: #ffe0cc;
+  border-bottom: 2px solid #ff7b24;
+  align-items: center;
+  display: flex;
+  height: 72px;
+  position: relative;
+  width: 100%;
+  #card-usuario {
+    right: 5%;
+    position: absolute;
+    display: flex;
+    b {
+      color: #333333;
+      text-decoration: none;
+      margin-right: 5px;
+      padding: 14px 15px 0px 0px;
+    }
+    p {
+      color: #a08979;
+    }
+    #nome {
+      font-size: small;
+    }
+    #linha-vertical {
+      height: 45px;
+      border-right: 1px solid #333333;
+    }
+    #avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: #333;
+      margin: 5px 5px 0px 15px;
+    }
+    #usuario {
+      margin-top: 4px;
+    }
+    #icone {
+      padding: 14px 0px 0px 12px;
+    }
+  }
+  #logo {
+    left: 5%;
+    position: absolute;
+  }
+}
+
+img {
+  cursor: pointer;
+}

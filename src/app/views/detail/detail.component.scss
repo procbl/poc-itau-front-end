@@ -1,0 +1,65 @@
+p {
+  color: #505050;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.margin-top {
+  margin-top: 30px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.container {
+  margin: 0% 5%;
+}
+
+.flex {
+  display: flex;
+  margin-top: 40px;
+}
+
+#sub-title {
+  margin-top: -21px;
+  color: #4e4e4e;
+}
+
+#title {
+  b {
+    color: #1c1c1c;
+  }
+}
+
+#informacoes {
+  width: 80%;
+}
+
+#voltar {
+  background-color: #9c9c9c;
+  color: white;
+  width: 5%;
+  margin-right: 10px;
+}
+
+#salvar {
+  background-color: #fa8341;
+  color: white;
+  width: 9%;
+}
+
+#grid-endereco {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+  grid-gap: 1vw;
+}
+
+#grid-empresa {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1vw;
+}

@@ -1,0 +1,61 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+#avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #333;
+  margin: 5px 5px 0px 15px;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.green-color {
+  color: green;
+}
+
+.red-color {
+  color: red;
+}
+
+.container {
+  margin: 0% 5%;
+}
+
+#sub-title {
+  margin-top: -21px;
+  color: #4e4e4e;
+}
+
+#title {
+  b {
+    color: #1c1c1c;
+  }
+}
+
+#input-pesquisar {
+  width: 25%;
+}
+
+#informacoes {
+  width: 80%;
+}
+
+.flex {
+  display: flex;
+  margin-top: 40px;
+}

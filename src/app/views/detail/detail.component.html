@@ -1,0 +1,97 @@
+<div class="container" *ngIf="endereco && form" >
+    
+    <div class="flex"> 
+        <div id="informacoes" >
+            <h1 id="title"><b>Polo {{nome}}</b></h1>
+            <h3 id="sub-title">exibindo detalhes do polo {{nome}}#{{id}}</h3>
+        </div>
+    </div>
+
+    <div class="margin-top">
+        <p>
+            Detalhes do Endereço
+        </p>
+        
+        <form [formGroup]="endereco" >
+            <div id="grid-endereco">
+                <mat-form-field appearance="outline">
+                    <mat-label>CEP</mat-label>
+                    <input mask="00000-000" (blur)="getEndereco(endereco.get('cep').value)" matInput formControlName="cep" placeholder="CEP" >
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome da Rua</mat-label>
+                    <input matInput formControlName="logradouro" placeholder="Nome da Rua" #input>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Bairro</mat-label>
+                    <input matInput formControlName="bairro" placeholder="Bairro" #input>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <input matInput formControlName="uf" placeholder="Estado" #input>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Cidade</mat-label>
+                    <input matInput formControlName="localidade" placeholder="Cidade" #input>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+
+    <div class="margin-top">
+        <p>
+            Detalhes da Empresa
+        </p>
+        
+        <form [formGroup]="form" *ngIf="form">
+            <div id="grid-empresa">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="name" placeholder="Nome" >
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Business</mat-label>
+                    <input matInput formControlName="business" placeholder="Business" #input>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Valuation</mat-label>
+                    <input [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" currencyMask matInput formControlName="valuation" placeholder="Valuation" #input>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>CNPJ</mat-label>
+                    <input  mask="00.000.000/0000-00" matInput formControlName="cnpj" placeholder="CNPJ" #input>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Ativo?</mat-label>
+                    <mat-select [(value)]="form.get('active').value">
+                      <mat-option [value]="true">Sim</mat-option>
+                      <mat-option [value]="false">Não</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                
+               <!--  <mat-form-field appearance="outline">
+                    <mat-label>Cidade</mat-label>
+                    <input matInput formControlName="localidade" placeholder="Cidade" #input>
+                </mat-form-field> -->
+            </div>
+        </form>
+    </div>
+    <div>
+        <button mat-flat-button [routerLink]="['/']" id="voltar" >Voltar</button>
+        <button mat-flat-button id="salvar" >Salvar</button>
+    </div>
+</div> 
+
+<div *ngIf="!(endereco && form)" >
+    <div class="container">
+      <h1 style="color:chocolate; margin-top: 50px;">API desativada. Tente novamente mais tarde.</h1>
+    </div>
+  </div>
