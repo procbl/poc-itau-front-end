@@ -1,4 +1,4 @@
-<div class="container" *ngIf="dataSource">
+<div class="container" *ngIf="dataSource && showView">
 
   <div class="flex"> 
     <div id="informacoes" >
@@ -61,9 +61,4 @@
     <mat-paginator [pageSizeOptions]="[2,5,10]"  [pageSize]="5" aria-label="Selecione a página"></mat-paginator>
   </div>
 </div>
-
-<div *ngIf="!dataSource">
-  <div class="container">
-    <h1 style="color:chocolate; margin-top: 50px;">API desativada. Tente novamente mais tarde.</h1>
-  </div>
-</div>
+ 

@@ -11,18 +11,32 @@ import { DetailService } from './detail.service';
 export class DetailComponent implements OnInit {
   public nome: string;
   public id: string;
+  public showView: boolean = false;
   form: FormGroup;
   endereco: FormGroup;
     
 
   constructor(private route: ActivatedRoute,
-    private detailComponent: DetailService,
+    private detailService: DetailService,
     private fb: FormBuilder,) { 
   }
   
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.detailComponent.getEmpresa(Number(this.id)).subscribe(async (res) => {
+    let res = this.detailService.mockGetEmpresa();
+    this.getEndereco(res.cep);
+    this.nome = res.name; 
+    this.form = this.fb.group({
+      active : [res.active],
+      business : [res.business],
+      cep : [res.cep],
+      cnpj : [res.cnpj],
+      name : [res.name],
+      valuation : [res.valuation]
+    })
+    this.showView = true;
+    /* //API ESTÁ FORA DO AR  
+      this.detailComponent.getEmpresa(Number(this.id)).subscribe(async (res) => {
       this.getEndereco(res.cep);
       this.nome = res.name; 
       this.form = this.fb.group({
@@ -33,18 +47,13 @@ export class DetailComponent implements OnInit {
         name : [res.name],
         valuation : [res.valuation]
       });   
-    })   
+    })  */  
 
-  }
-
-  teste(){
-    console.log(this.form)
-    console.log(this.endereco)
   }
 
   getEndereco(cep){
     if( cep != '' && cep !== null && cep.length > 7){
-      this.detailComponent.getEndereco(cep).subscribe((res) => {
+      this.detailService.getEndereco(cep).subscribe((res) => {
         this.endereco = this.fb.group({
           bairro: [res.bairro],
           cep: [res.cep],

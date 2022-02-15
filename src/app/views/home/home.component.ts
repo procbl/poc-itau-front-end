@@ -14,18 +14,21 @@ export class HomeComponent {
   dataSource: MatTableDataSource<IBusiness>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  public showView: boolean = false;
 
   constructor(private homeService: HomeService,) {  
-    this.homeService.getEmpresas().subscribe((res) => {
+    let res = this.homeService.mockGetEmpresas();
+    this.dataSource = new MatTableDataSource(res);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.showView = true; 
+    /* //API ESTÁ FORA DO AR 
+      this.homeService.getEmpresas().subscribe((res) => {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort; 
-    })  
+    })   */
   } 
-
-  detail(){
-   
-  }
   
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -15,6 +15,17 @@ export class DetailService {
     return this.http.get<IBusiness>(`https://60820a0e827b350017cfbaea.mockapi.io/api/v1/itau_teste/${id}`);
   }
 
+  mockGetEmpresa(): IBusiness{
+   return {
+    id: 1,
+    active : true,
+    business : "Financial Center",
+    cep : "04538132",
+    cnpj : 17298092000130,
+    name : "Itaú BBA",
+    valuation : 850000000.50}
+  }
+
   getEndereco(cep){
     return this.http.get<IEndereco>(`https://viacep.com.br/ws/${cep}/json`);
   }

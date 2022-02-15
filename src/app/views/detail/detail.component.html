@@ -1,4 +1,4 @@
-<div class="container" *ngIf="endereco && form" >
+<div class="container" *ngIf="endereco && form && showView" >
     
     <div class="flex"> 
         <div id="informacoes" >
@@ -75,12 +75,7 @@
                       <mat-option [value]="true">Sim</mat-option>
                       <mat-option [value]="false">Não</mat-option>
                     </mat-select>
-                  </mat-form-field>
-                
-               <!--  <mat-form-field appearance="outline">
-                    <mat-label>Cidade</mat-label>
-                    <input matInput formControlName="localidade" placeholder="Cidade" #input>
-                </mat-form-field> -->
+                  </mat-form-field> 
             </div>
         </form>
     </div>
@@ -89,9 +84,4 @@
         <button mat-flat-button id="salvar" >Salvar</button>
     </div>
 </div> 
-
-<div *ngIf="!(endereco && form)" >
-    <div class="container">
-      <h1 style="color:chocolate; margin-top: 50px;">API desativada. Tente novamente mais tarde.</h1>
-    </div>
-  </div>
+ 
