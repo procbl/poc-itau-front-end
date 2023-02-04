@@ -14,31 +14,32 @@ export class DetailComponent implements OnInit {
   public showView: boolean = false;
   form: FormGroup;
   endereco: FormGroup;
-    
+
 
   constructor(private route: ActivatedRoute,
     private detailService: DetailService,
-    private fb: FormBuilder,) { 
+    private fb: FormBuilder,) {
   }
-  
+
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     let res = this.detailService.mockGetEmpresa();
     this.getEndereco(res.cep);
-    this.nome = res.name; 
+    this.nome = res.name;
     this.form = this.fb.group({
-      active : [res.active],
-      business : [res.business],
-      cep : [res.cep],
-      cnpj : [res.cnpj],
-      name : [res.name],
-      valuation : [res.valuation]
+      active: [res.active],
+      business: [res.business],
+      cep: [res.cep],
+      cnpj: [res.cnpj],
+      name: [res.name],
+      valuation: [res.valuation],
+      data: [new Date()]
     })
     this.showView = true;
-    /* //API ESTÁ FORA DO AR  
+    /* //API ESTÁ FORA DO AR
       this.detailComponent.getEmpresa(Number(this.id)).subscribe(async (res) => {
       this.getEndereco(res.cep);
-      this.nome = res.name; 
+      this.nome = res.name;
       this.form = this.fb.group({
         active : [res.active],
         business : [res.business],
@@ -46,13 +47,13 @@ export class DetailComponent implements OnInit {
         cnpj : [res.cnpj],
         name : [res.name],
         valuation : [res.valuation]
-      });   
-    })  */  
+      });
+    })  */
 
   }
 
-  getEndereco(cep){
-    if( cep != '' && cep !== null && cep.length > 7){
+  getEndereco(cep) {
+    if (cep != '' && cep !== null && cep.length > 7) {
       this.detailService.getEndereco(cep).subscribe((res) => {
         this.endereco = this.fb.group({
           bairro: [res.bairro],
@@ -65,7 +66,7 @@ export class DetailComponent implements OnInit {
           logradouro: [res.logradouro],
           siafi: [res.siafi],
           uf: [res.uf]
-        }) 
+        })
       })
     } else {
       this.endereco.reset();
@@ -75,14 +76,14 @@ export class DetailComponent implements OnInit {
 
 
 export interface IEndereco {
-    bairro:string; 
-    cep:string; 
-    complemento:string; 
-    ddd:string; 
-    gia:string; 
-    ibge:string; 
-    localidade:string; 
-    logradouro:string; 
-    siafi:string; 
-    uf:string; 
+  bairro: string;
+  cep: string;
+  complemento: string;
+  ddd: string;
+  gia: string;
+  ibge: string;
+  localidade: string;
+  logradouro: string;
+  siafi: string;
+  uf: string;
 }

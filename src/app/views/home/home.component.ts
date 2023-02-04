@@ -3,6 +3,7 @@ import { HomeService } from './home.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,47 @@ export class HomeComponent {
       this.dataSource.sort = this.sort; 
     })   */
   } 
+
+  validaSms(){
+    this.homeService.getValidaSms().subscribe(async (res) => {
+
+      if(res.validaSms === true) {
+        console.log('antes de criar conta');
+         this.homeService.getCriaConta().subscribe((res) => {
+          console.log(res); 
+        }) 
+      }
+      await console.log('depois de criar conta');
+    }) 
+  }
+
+  criaConta(sim){
+    if(sim === true){
+      this.homeService.getCriaConta().subscribe((res) => {
+        
+        return res;
+      }) 
+    } else {
+      return new Observable();
+    }
+  }
+
+  /* this.limiteGlobalService
+      .fatca(data)
+      .pipe(
+        finalize(() => this.loaderService.hide()),
+        take(1)
+      )
+      .subscribe(
+        async (res) => {
+          this.onClickNext();
+        },
+        (err) => {
+          this.toastr.warning(
+            err.error.messages[0] || 'Erro ao enviar a Fatca.'
+          );
+        }
+      ); */
   
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
